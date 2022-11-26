@@ -23,11 +23,6 @@ public class US01 {
     List<String> actualColumnNames = new ArrayList<>();
     int numberOfIDs;
 
-    @Given("Establish the database connection")
-    public void establishTheDatabaseConnection() {
-        DB_Util.createConnection(Driver.getProperty("DBurl"), Driver.getProperty("DBUsername"), Driver.getProperty("DBPassword"));
-    }
-
     @When("Execute query to get all IDs from users")
     public void executeQueryToGetAllIDsFromUsers() throws SQLException {
         ResultSet resultSet = DB_Util.runQuery("select id from users");
