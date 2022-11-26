@@ -1,4 +1,4 @@
-@us1 @smoke @wip
+@us1 @smoke
 Feature: As a data consumer, I want the user information are stored in mySql DB correctly in users table.
 @ui
   Scenario: verify users has unique IDs
