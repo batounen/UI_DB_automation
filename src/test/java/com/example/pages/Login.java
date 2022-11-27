@@ -36,4 +36,14 @@ public class Login {
         }
     }
 
+    public void positive_login_student() {
+        Driver.getDriver().get(Driver.getProperty("url"));
+        if (Driver.getDriver().getTitle().equals("Login - Library")) {
+            username.sendKeys(Driver.getProperty("validUsernameStudent"));
+            password.sendKeys(Driver.getProperty("validPasswordStudent"));
+            signInBtn.click();
+            Driver.sleep(3);
+        }
+    }
+
 }
