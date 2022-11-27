@@ -57,6 +57,10 @@ public class Borrowing_Books_Student {
         System.out.println("List of Borrowed Books Not Returned DB = " + listOfBorrowedBooksNotReturnedDB);
         System.out.println("List of Borrowed Books Not Returned UI = " + listOfBorrowedBooksNotReturnedUI);
         Assertions.assertEquals(listOfBorrowedBooksNotReturnedDB, listOfBorrowedBooksNotReturnedUI);
+        for (WebElement each : returnBorrowedBookBtns) {
+            if (!each.getAttribute("class").contains("disabled")) {
+                each.click();
+            }
+        }
     }
-
 }
