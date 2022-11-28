@@ -23,6 +23,7 @@ public class Hooks {
             scenario.attach(screenShots, "image/png", scenario.getName());
         }
         Driver.cleanUpDriver();
+        DB_Util.destroy();
     }
 
 }
