@@ -1,4 +1,4 @@
-@us6 @smoke
+@us6 @smoke @ui @db
 Feature: Books module
   As a librarian, I should be able to add new books to the library
 

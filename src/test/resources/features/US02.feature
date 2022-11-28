@@ -1,4 +1,4 @@
-@us2 @smoke
+@us2 @smoke @ui @db
 Feature: As a librarian, I want to know borrowed books number
 
   Scenario: verify the total amount of borrowed books

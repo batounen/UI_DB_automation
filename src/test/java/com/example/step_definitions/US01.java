@@ -37,7 +37,6 @@ public class US01 {
         System.out.println("Number Of IDs from DB in HashSet = " + ids.size());
         System.out.println("Number Of users from UI = " + userCountUI);
         Assert.assertEquals(numberOfIDs, ids.size());
-        DB_Util.destroy();
     }
 
     @When("Execute query to get all columns")
@@ -51,8 +50,8 @@ public class US01 {
 
     @Then("verify the below columns are listed in result")
     public void verifyTheBelowColumnsAreListedInResult(List<String> expectedColumnNames) {
-        System.out.println("expectedColumnNames = " + expectedColumnNames);
-        System.out.println("columnNames = " + actualColumnNames);
+        System.out.println("Expected Column Names = " + expectedColumnNames);
+        System.out.println("Actual Column Names = " + actualColumnNames);
         Assert.assertEquals(expectedColumnNames, actualColumnNames);
     }
 }
