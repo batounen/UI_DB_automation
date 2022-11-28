@@ -10,10 +10,24 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    @Before
-    public void setup() throws Exception {
+    @Before ("@ui")
+    public void setupUI() throws Exception {
         Driver.createDriver();
+    }
+
+    @Before ("@db")
+    public void setupDB() throws Exception {
         DB_Util.createConnection(Driver.getProperty("DBurl"), Driver.getProperty("DBUsername"), Driver.getProperty("DBPassword"));
+    }
+
+    @After  ("@ui")
+    public void tearDownUI(Scenario scenario) {
+        Driver.cleanUpDriver();
+    }
+
+    @After  ("@db")
+    public void tearDownDB() {
+        DB_Util.destroy();
     }
 
     @After
@@ -22,8 +36,5 @@ public class Hooks {
             byte[] screenShots = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenShots, "image/png", scenario.getName());
         }
-        Driver.cleanUpDriver();
-        DB_Util.destroy();
     }
-
 }
