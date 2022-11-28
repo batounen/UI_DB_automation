@@ -2,9 +2,8 @@ package com.example.step_definitions;
 
 import com.example.pages.Books;
 import com.example.utils.DB_Util;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.junit.jupiter.api.Assertions;
+import io.cucumber.java.en.*;
+import org.junit.Assert;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -35,7 +34,7 @@ public class US04 {
         }
         System.out.println("Visible books on UI = " + books.getVisibleBookNAY());
         System.out.println("expectedNAY = " + expectedNAY);
-        Assertions.assertEquals(expectedNAY, books.getVisibleBookNAY());
+        Assert.assertEquals(expectedNAY, books.getVisibleBookNAY());
     }
 
 }

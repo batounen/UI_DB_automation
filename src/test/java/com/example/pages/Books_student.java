@@ -1,8 +1,8 @@
 package com.example.pages;
 
 import com.example.utils.Driver;
-import org.apache.poi.ss.formula.functions.DStarRunner;
-import org.junit.jupiter.api.Assertions;
+import org.junit.Assert;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +31,7 @@ public class Books_student extends Books {
                 break;
             }
         }
-        Assertions.assertTrue(bookBorrowedMsg.isDisplayed());
+        Assert.assertTrue(bookBorrowedMsg.isDisplayed());
     }
 
 }

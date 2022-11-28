@@ -3,11 +3,8 @@ package com.example.step_definitions;
 import com.example.pages.Dashboard;
 import com.example.pages.Login;
 import com.example.utils.DB_Util;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.junit.jupiter.api.Assertions;
+import io.cucumber.java.en.*;
+import org.junit.Assert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,6 +33,6 @@ public class US02 {
         numberOfBorrowedBooksDB = resultSet.getInt(1);
         System.out.println("numberOfBorrowedBooksDB = " + numberOfBorrowedBooksDB);
         System.out.println("numberOfBorrowedBooksUI = " + numberOfBorrowedBooksUI);
-        Assertions.assertEquals(numberOfBorrowedBooksDB, numberOfBorrowedBooksUI);
+        Assert.assertEquals(numberOfBorrowedBooksDB, numberOfBorrowedBooksUI);
     }
 }

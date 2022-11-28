@@ -3,11 +3,8 @@ package com.example.step_definitions;
 import com.example.pages.Dashboard;
 import com.example.pages.Login;
 import com.example.utils.DB_Util;
-import com.example.utils.Driver;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.junit.jupiter.api.Assertions;
+import io.cucumber.java.en.*;
+import org.junit.Assert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class US01 {
         System.out.println("Number Of IDs from DB = " + numberOfIDs);
         System.out.println("Number Of IDs from DB in HashSet = " + ids.size());
         System.out.println("Number Of users from UI = " + userCountUI);
-        Assertions.assertEquals(numberOfIDs, ids.size());
+        Assert.assertEquals(numberOfIDs, ids.size());
         DB_Util.destroy();
     }
 
@@ -56,6 +53,6 @@ public class US01 {
     public void verifyTheBelowColumnsAreListedInResult(List<String> expectedColumnNames) {
         System.out.println("expectedColumnNames = " + expectedColumnNames);
         System.out.println("columnNames = " + actualColumnNames);
-        Assertions.assertEquals(expectedColumnNames, actualColumnNames);
+        Assert.assertEquals(expectedColumnNames, actualColumnNames);
     }
 }

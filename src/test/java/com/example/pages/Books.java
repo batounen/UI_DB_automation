@@ -2,7 +2,8 @@ package com.example.pages;
 
 import com.example.utils.DB_Util;
 import com.example.utils.Driver;
-import org.junit.jupiter.api.Assertions;
+
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -77,6 +78,9 @@ public class Books {
     }
 
     public void searchBook(String bookToSearch) {
+        Select select = new Select(getNumberOfRecordsDD());
+        select.selectByVisibleText(Driver.getProperty("numOfRecordsToSee"));
+        Driver.sleep(1);
         bookSearchBox.sendKeys(bookToSearch);
         Driver.sleep(2);
     }
@@ -142,7 +146,6 @@ public class Books {
 
     public void saveNewBookEntry() {
         submitBtn.click();
-//        Driver.waitUntilClickable(addBookBtn);
         Driver.sleep(2);
     }
 
@@ -151,7 +154,7 @@ public class Books {
         String bookNameFromUI = getVisibleBookNames().get(0);
         System.out.println("Newly entered book name = " + bookName);
         System.out.println("Newly entered book name search result from UI = " + bookNameFromUI);
-        Assertions.assertTrue(bookNameFromUI.startsWith(bookName));
+        Assert.assertTrue(bookNameFromUI.startsWith(bookName));
     }
 
     public void verifyNewBookEntryDB(String bookName) throws SQLException {
@@ -160,7 +163,7 @@ public class Books {
         String bookNameFromDB = resultSet.getString(1);
         System.out.println("Newly entered book name = " + bookName);
         System.out.println("Newly entered book name search result from DB = " + bookNameFromDB);
-        Assertions.assertTrue(bookNameFromDB.startsWith(bookName));
+        Assert.assertTrue(bookNameFromDB.startsWith(bookName));
     }
 
 }

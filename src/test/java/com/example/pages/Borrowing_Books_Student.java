@@ -2,7 +2,8 @@ package com.example.pages;
 
 import com.example.utils.DB_Util;
 import com.example.utils.Driver;
-import org.junit.jupiter.api.Assertions;
+
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -56,7 +57,7 @@ public class Borrowing_Books_Student {
         }
         System.out.println("List of Borrowed Books Not Returned DB = " + listOfBorrowedBooksNotReturnedDB);
         System.out.println("List of Borrowed Books Not Returned UI = " + listOfBorrowedBooksNotReturnedUI);
-        Assertions.assertEquals(listOfBorrowedBooksNotReturnedDB, listOfBorrowedBooksNotReturnedUI);
+        Assert.assertEquals(listOfBorrowedBooksNotReturnedDB, listOfBorrowedBooksNotReturnedUI);
         for (WebElement each : returnBorrowedBookBtns) {
             if (!each.getAttribute("class").contains("disabled")) {
                 each.click();
