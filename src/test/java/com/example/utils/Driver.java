@@ -99,6 +99,9 @@ public final class Driver {
             gridUrl = System.getProperty("HUBURL");
         }
         String remoteUrl = gridUrl;
+        if (System.getProperty("BROWSER") != null) {
+            browser = System.getProperty("BROWSER");
+        }
         RemoteWebDriver remoteWebDriver;
         if (browser.isBlank()) {
             browser = defaultBrowser;
@@ -133,6 +136,9 @@ public final class Driver {
      * @throws Exception
      */
     private static WebDriver createLocalDriver() throws Exception {
+        if (System.getProperty("BROWSER") != null) {
+            browser = System.getProperty("BROWSER");
+        }
         WebDriver driver = null;
         if (driverPool.get() == null) {
             switch (browser.toLowerCase()) {
