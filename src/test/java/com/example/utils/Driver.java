@@ -10,8 +10,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -27,10 +25,10 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,7 +38,7 @@ public final class Driver {
     private static final Properties properties = new Properties();
     private static String browser;
     private static final String defaultBrowser;
-    private static final int defaultWaitTime;
+    private static final Duration defaultWaitTime;
     private static boolean enableGrid;
     private static String gridUrl;
 
@@ -53,7 +51,7 @@ public final class Driver {
             e.printStackTrace();
         }
         defaultBrowser = getProperty("browserDefault").toLowerCase();
-        defaultWaitTime = Integer.parseInt(getProperty("defaultWaitTime"));
+        defaultWaitTime = Duration.ofSeconds(Integer.parseInt(getProperty("defaultWaitTime")));
         browser = getProperty("browser").toLowerCase();
         enableGrid = Boolean.parseBoolean(getProperty("gridEnable").toLowerCase());
         gridUrl = getProperty("gridHubUrl");
@@ -152,11 +150,6 @@ public final class Driver {
                     WebDriverManager.edgedriver().setup();
                     EdgeOptions edgeOptions = new EdgeOptions();
                     driver = new EdgeDriver(edgeOptions);
-                    break;
-                case "opera":
-                    WebDriverManager.operadriver().setup();
-                    OperaOptions operaOptions = new OperaOptions();
-                    driver = new OperaDriver(operaOptions);
                     break;
                 case "chromeheadless":
                     WebDriverManager.chromedriver().setup();
@@ -423,7 +416,7 @@ public final class Driver {
      * Method to adjust implicit wait time
      */
     public static void waitImplicit() {
-        driverPool.get().manage().timeouts().implicitlyWait(defaultWaitTime, TimeUnit.SECONDS);
+        driverPool.get().manage().timeouts().implicitlyWait(defaultWaitTime);
     }
 
     /**
@@ -486,7 +479,7 @@ public final class Driver {
      * Method to adjust implicit wait time
      */
     public static void waitPageLoadDefaultTime() {
-        driverPool.get().manage().timeouts().pageLoadTimeout(defaultWaitTime, TimeUnit.SECONDS);
+        driverPool.get().manage().timeouts().pageLoadTimeout(defaultWaitTime);
     }
 
     /**
