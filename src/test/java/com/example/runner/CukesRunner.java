@@ -10,16 +10,14 @@ import org.junit.runner.RunWith;
                 "pretty",
                 "json:target/cucumber.json",
                 "html:target/cucumber-reports.html",
-                "junit:target/junit/junit-report.xml",
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         features = "src/test/resources/features",
         glue = "com/example/step_definitions",
-        tags = "@smoke",
+        tags = "@us1",
         publish = true
 )
 
 public class CukesRunner {
-
 }
