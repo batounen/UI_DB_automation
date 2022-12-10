@@ -15,7 +15,7 @@ Feature: Books module
     Then the librarian verify new book by "<Book Name>"
     Then the librarian verify new book from database by "<Book Name>"
     Examples:
-      | Book Name             | ISBN     | Year | Author          | Book Category        |
-      | Clean Code            | 09112021 | 2021 | Robert C.Martin | Drama                |
-      | Head First Java       | 10112021 | 2021 | Kathy Sierra    | Action and Adventure |
-      | The Scrum Field Guide | 11112021 | 2006 | Mitch Lacey     | Short Story          |
+      | Book Name  | ISBN     | Year | Author       | Book Category        |
+      | Java OCA8  | 09112022 | 2022 | Oracle       | Classic              |
+      | Breath Air | 10112022 | 2022 | Kathy Sierra | Action and Adventure |
+      | SDET life  | 11112022 | 2002 | Mitch Lacey  | Science Fiction      |
