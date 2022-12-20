@@ -26,7 +26,11 @@ public class Login {
     private WebElement signInBtn;
 
     public void positive_login() {
-        Driver.getDriver().get(Driver.getProperty("url"));
+        if (System.getProperty("LOGINURL") != null) {
+            Driver.getDriver().get(System.getProperty("LOGINURL"));
+        } else {
+            Driver.getDriver().get(Driver.getProperty("url"));
+        }
         if (Driver.getDriver().getTitle().equals("Login - Library")) {
             username.sendKeys(Driver.getProperty("validUsername"));
             password.sendKeys(Driver.getProperty("validPassword"));
@@ -36,7 +40,11 @@ public class Login {
     }
 
     public void positive_login_student() {
-        Driver.getDriver().get(Driver.getProperty("url"));
+        if (System.getProperty("LOGINURL") != null) {
+            Driver.getDriver().get(System.getProperty("LOGINURL"));
+        } else {
+            Driver.getDriver().get(Driver.getProperty("url"));
+        }
         if (Driver.getDriver().getTitle().equals("Login - Library")) {
             username.sendKeys(Driver.getProperty("validUsernameStudent"));
             password.sendKeys(Driver.getProperty("validPasswordStudent"));

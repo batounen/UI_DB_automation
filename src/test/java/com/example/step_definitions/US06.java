@@ -53,5 +53,4 @@ public class US06 {
     public void theLibrarianVerifyNewBookFromDatabaseBy(String bookName) throws SQLException {
         books.verifyNewBookEntryDB(bookName);
     }
-
 }

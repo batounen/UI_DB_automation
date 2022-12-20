@@ -36,11 +36,13 @@ public final class Driver {
 
     private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
     private static final Properties properties = new Properties();
-    private static String browser;
-    private static final String defaultBrowser;
     private static final Duration defaultWaitTime;
+    private static final String defaultBrowser;
     private static boolean enableGrid;
+    private static String browser;
     private static String gridUrl;
+    private static String loginUrl;
+    private static String dbUrl;
 
     static {
         try {
@@ -55,6 +57,8 @@ public final class Driver {
         browser = getProperty("browser").toLowerCase();
         enableGrid = Boolean.parseBoolean(getProperty("gridEnable").toLowerCase());
         gridUrl = getProperty("gridHubUrl");
+        loginUrl = getProperty("url");
+        dbUrl = getProperty("DBurl");
     }
 
     /**

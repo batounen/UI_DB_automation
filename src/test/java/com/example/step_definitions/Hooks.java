@@ -10,31 +10,33 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    @Before ("@ui")
+    @Before("@ui")
     public void setupUI() throws Exception {
         Driver.createDriver();
     }
 
-    @Before ("@db")
-    public void setupDB() throws Exception {
-        DB_Util.createConnection(Driver.getProperty("DBurl"), Driver.getProperty("DBUsername"), Driver.getProperty("DBPassword"));
-    }
-
-    @After  ("@ui")
+    @After("@ui")
     public void tearDownUI(Scenario scenario) {
-        Driver.cleanUpDriver();
-    }
-
-    @After  ("@db")
-    public void tearDownDB() {
-        DB_Util.destroy();
-    }
-
-    @After
-    public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             byte[] screenShots = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenShots, "image/png", scenario.getName());
         }
+        Driver.cleanUpDriver();
+    }
+
+    @Before("@db")
+    public void setupDB() throws Exception {
+        String url = "";
+        if (System.getProperty("DBURL") != null) {
+            url = System.getProperty("DBURL");
+        } else {
+            url = Driver.getProperty("DBurl");
+        }
+        DB_Util.createConnection(url, Driver.getProperty("DBUsername"), Driver.getProperty("DBPassword"));
+    }
+
+    @After("@db")
+    public void tearDownDB() {
+        DB_Util.destroy();
     }
 }
