@@ -24,6 +24,7 @@
         <commons.collection.ver>4.4</commons.collection.ver>
         <ashot.ver>1.5.4</ashot.ver>
         <mysql.ver>8.0.31</mysql.ver>
+        <surefire.ver>3.0.0-M5</surefire.ver>
     </properties>
 
     <build>
@@ -31,12 +32,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>${surefire.ver}</version>
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>3</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <includes>
                         <include>**/CukesRunner*.java</include>
                     </includes>
